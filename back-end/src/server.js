@@ -1,8 +1,15 @@
-const server = require('express')();
-const router = require('./routes');
+require('dotenv');
+const express = require('express');
+const morgan = require('morgan');
 
-const PORT = 3000;
+const app = express();
+const PORT = process.env.PORT || 3001;
 
-server.all('/', router);
+const loginRouter = require('./api/controllers/loginController');
 
-server.listen(PORT, () => console.log(`Server rodando na porta: ${PORT}!`));
+app.use(express.json());
+app.use(morgan('dev'));
+
+app.use('/login', loginRouter);
+
+app.listen(PORT, () => console.log(`Server rodando na porta: ${PORT}!`));
