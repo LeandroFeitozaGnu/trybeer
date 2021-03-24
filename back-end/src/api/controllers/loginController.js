@@ -1,11 +1,13 @@
 const loginRouter = require('express').Router();
 const Service = require('../services/loginService');
 
-loginRouter.post('/', (req, res) => {
+loginRouter.post('/', async (req, res) => {
   const { email, password } = req.body;
-  Service.loginService(email, password);
+  const user = await Service.loginService(email, password);
+    
+  if (user.error) return res.status(user.code).json({ message: user.message });
 
-  res.status(200).json({ message: 'teste' });
+  return res.status(user.code).json({ message: user.message });
 });
 
 module.exports = loginRouter;

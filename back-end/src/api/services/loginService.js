@@ -1,9 +1,15 @@
 const Model = require('../models/loginModel');
+const response = require('../../utils/userConstants');
 
-const loginService = (email, password) => {
-  if (!email || !password) return { message: 'Erro qualquer' };
+const loginService = async (email, password) => {
+  if (!email || !password) return response.BAD_REQUEST;
 
-  Model.login(email, password);
+  const user = await Model.login(email, password);
+  
+  if (user.length === 0) return response.USER_NOT_FOUND;
+  if (user.error) return user;
+  
+  return response.USER_LOGIN;
 };
 
 module.exports = {
