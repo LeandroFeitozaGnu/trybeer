@@ -14,8 +14,8 @@ app.use(morgan('dev'));
 app.use('/login', loginRouter);
 
 app.get('/teste', validateToken, (req, res) => {
-  res.send('validando token')
-})
+  res.send('validando token');
+});
 
 app.all('*', (_req, res) => {
   res

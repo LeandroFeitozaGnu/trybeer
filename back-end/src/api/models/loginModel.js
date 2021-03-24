@@ -20,7 +20,7 @@ const findByEmail = async (email) => {
       'SELECT email FROM users WHERE email = ?',
       [email],
     );
-    return user
+    return user;
   } catch (error) {
     console.error(error);
     return response.SQL_ERROR;
