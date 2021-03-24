@@ -19,6 +19,11 @@ module.exports = {
     message: 'Erro interno',
     error: true,
   },
+  UNAUTHORIZED: {
+    code: 401,
+    message: 'Token inválido ou não informado',
+    error: true,
+  },
   SUCCESFULLY_LOGIN: {
     code: 200,
     message: 'Login efetuado com sucesso',

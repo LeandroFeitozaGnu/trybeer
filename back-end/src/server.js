@@ -6,11 +6,16 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 const loginRouter = require('./api/controllers/loginController');
+const validateToken = require('./auth/validateToken');
 
 app.use(express.json());
 app.use(morgan('dev'));
 
 app.use('/login', loginRouter);
+
+app.get('/teste', validateToken, (req, res) => {
+  res.send('validando token')
+})
 
 app.all('*', (_req, res) => {
   res

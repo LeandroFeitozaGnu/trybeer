@@ -7,7 +7,7 @@ loginRouter.post('/', async (req, res) => {
     
   if (user.error) return res.status(user.code).json({ message: user.message });
 
-  return res.status(user.code).json({ message: user.message });
+  return res.status(200).json({ user });
 });
 
 module.exports = loginRouter;
