@@ -19,7 +19,7 @@ module.exports = {
     message: 'Erro interno',
     error: true,
   },
-  USER_LOGIN: {
+  SUCCESFULLY_LOGIN: {
     code: 200,
     message: 'Login efetuado com sucesso',
     error: false,

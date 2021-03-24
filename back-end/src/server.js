@@ -12,4 +12,10 @@ app.use(morgan('dev'));
 
 app.use('/login', loginRouter);
 
+app.all('*', (_req, res) => {
+  res
+    .status(404)
+    .json({ message: 'EndPoint não existe' });
+});
+
 app.listen(PORT, () => console.log(`Server rodando na porta: ${PORT}!`));

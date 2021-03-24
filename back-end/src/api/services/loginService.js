@@ -9,7 +9,7 @@ const loginService = async (email, password) => {
   if (user.length === 0) return response.USER_NOT_FOUND;
   if (user.error) return user;
   
-  return response.USER_LOGIN;
+  return response.SUCCESFULLY_LOGIN;
 };
 
 module.exports = {
