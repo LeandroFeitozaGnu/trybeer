@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const httpCustomMessages = require('../../utils/httpCustomMessages');
+const httpResponse = require('../../utils/httpResponses');
 const httpStatusCode = require('../../utils/httpStatusCode');
 
 const { SECRET } = process.env;
@@ -7,7 +7,7 @@ const { SECRET } = process.env;
 module.exports = async (req, res, next) => {
     const token = req.headers.authorization;
 
-   if (!token) return httpCustomMessages.UNAUTHORIZED; 
+   if (!token) return httpResponse.UNAUTHORIZED; 
 
     jwt.verify(token, SECRET, (err, decoded) => {
       if (err) {

@@ -3,10 +3,7 @@ module.exports = {
     message: 'Dados Inválidos. Tente novamente.',
     error: true,
   },
-  EMAIL_ALREADY_EXISTS: {
-    message: 'Email já cadastrado',
-    error: true,
-  },
+  EMAIL_ALREADY_EXISTS: 'Email já cadastrado',
   USER_NOT_FOUND: {
     message: 'Usuário não cadastrado.',
     error: true,
@@ -21,10 +18,11 @@ module.exports = {
   },
   SUCCESFULLY_LOGIN: {
     message: 'Login efetuado com sucesso',
-    error: false,
+    error: true,
   },
   CREATED: {
-     message: 'Usuário cadastrado',
+    message: 'Usuário cadastrado',
     error: false,
   },
+  
 };
