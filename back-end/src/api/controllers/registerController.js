@@ -1,8 +1,8 @@
+/* eslint-disable max-lines-per-function */
 const registerRouter = require('express').Router();
 const Service = require('../services/registerService');
-const CONSTANTS = require('../../utils/userConstants');
-
-const { CREATED } = CONSTANTS;
+const httpStatusCode = require('../../utils/httpStatusCode');
+const httpResponse = require('../../utils/httpResponses');
 
 registerRouter.post('/', async (req, res, next) => {
 try {
@@ -10,15 +10,20 @@ try {
   const createdUser = await Service.registerUser(name, email, password, role);
   if (createdUser.error) {
     return next({
-      statusCode: createdUser.code,
+      statusCode: httpStatusCode.BAD_REQUEST,
       errorMessage: createdUser.message,
   });
   }
-    res.status(CREATED.code).json(CREATED.message);
+    res.status(httpStatusCode.OK).json({ message: httpResponse.CREATED.message });
 } catch (error) {
+  if (error.code === 'ER_DUP_ENTRY') {
+    res
+      .status(httpStatusCode.CONFILCT)
+      .json({ message: httpResponse.EMAIL_ALREADY_EXISTS.message });
+  }
    next({
     statusCode: 500,
-    errorMessage: (error.code === 'ER_DUP_ENTRY') ? 'Email já cadastrado' : error.message,
+    errorMessage: error.message,
     error,
    });
 }

@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const handleError = require('./middlewares/error');
 const loginRouter = require('./api/controllers/loginController');
 const registerRouter = require('./api/controllers/registerController');
+const productsRouter = require('./api/controllers/productsController');
 const validateToken = require('./middlewares/auth/validateToken');
 
 const app = express();
@@ -15,8 +16,9 @@ app.use(morgan('dev'));
 
 app.use('/login', loginRouter);
 app.use('/register', registerRouter);
+app.use('/products', productsRouter);
 
-app.get('/teste', validateToken, (req, res) => {
+app.get('/teste', validateToken, (_req, res) => {
   res.send('validando token');
 });
 
