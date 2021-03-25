@@ -3,7 +3,10 @@ module.exports = {
     message: 'Dados Inválidos. Tente novamente.',
     error: true,
   },
-  EMAIL_ALREADY_EXISTS: 'Email já cadastrado',
+  EMAIL_ALREADY_EXISTS: {
+    message: 'Email já cadastrado',
+    error: true,
+  },
   USER_NOT_FOUND: {
     message: 'Usuário não cadastrado.',
     error: true,

@@ -10,7 +10,7 @@ productsRouter.get('/', async (_req, res, next) => {
   } catch (error) {
     return next({
       statusCode: 500,
-      errorMessage: (error.sqlMessage) ? httpResponse.SQL_ERROR : error.message,
+      errorMessage: (error.sqlMessage) ? httpResponse.SQL_ERROR.message : error.message,
       error,
     });
   }

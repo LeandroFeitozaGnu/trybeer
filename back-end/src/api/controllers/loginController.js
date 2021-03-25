@@ -1,7 +1,6 @@
 const loginRouter = require('express').Router();
 const Service = require('../services/loginService');
 const httpStatusCode = require('../../utils/httpStatusCode');
-const httpResponse = require('../../utils/httpResponses');
 
 loginRouter.post('/', async (req, res, next) => {
   try {
@@ -11,7 +10,7 @@ loginRouter.post('/', async (req, res, next) => {
     if (user.error) {
       return res
         .status(httpStatusCode.BAD_REQUEST)
-        .json({ message: httpResponse.INVALID_DATA.message });
+        .json({ message: user.message });
     } 
   
     return res.status(httpStatusCode.OK).json(user);

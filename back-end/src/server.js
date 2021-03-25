@@ -18,7 +18,7 @@ app.use('/login', loginRouter);
 app.use('/register', registerRouter);
 app.use('/products', productsRouter);
 
-app.get('/teste', validateToken, (req, res) => {
+app.get('/teste', validateToken, (_req, res) => {
   res.send('validando token');
 });
 
