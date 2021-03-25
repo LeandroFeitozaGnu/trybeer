@@ -29,4 +29,9 @@ module.exports = {
     message: 'Login efetuado com sucesso',
     error: false,
   },
+  CREATED: {
+    code: 201,
+    message: 'Usuário cadastrado',
+    error: false,
+  },
 };

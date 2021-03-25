@@ -1,6 +1,6 @@
 const Model = require('../models/loginModel');
 const response = require('../../utils/userConstants');
-const generateToken = require('../../auth/generateToken');
+const generateToken = require('../../middlewares/auth/generateToken');
 
 const getToken = (user) => {
   const { id, name, email, role } = user;
