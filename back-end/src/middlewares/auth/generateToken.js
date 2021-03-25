@@ -4,7 +4,7 @@ const { SECRET } = process.env;
 
 const generateToken = ({ id, name, email, role }) => {
   const user = { id, name, email, role };
-  console.log(user);
+  
   const jwtConfig = {
     expiresIn: '1h',
     algorithm: 'HS256',

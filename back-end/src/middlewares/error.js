@@ -5,6 +5,6 @@ module.exports = (err, _req, res, _next) => {
     .status(err.statusCode || 500)
     .json({
       message: err.errorMessage || 'Erro interno',
-      code: err.customCode,
+      // code: err.customCode,
     });
 };

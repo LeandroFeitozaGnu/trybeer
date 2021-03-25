@@ -1,23 +1,18 @@
 const Model = require('../models/loginModel');
-const response = require('../../utils/userConstants');
+const httpCustomMessages = require('../../utils/httpCustomMessages');
 const generateToken = require('../../middlewares/auth/generateToken');
 
-const getToken = (user) => {
-  const { id, name, email, role } = user;
-  const token = generateToken({ id, name, email, role });
-
-  return token;
-};
-
 const loginService = async (email, password) => {
-  if (!email || !password) return response.BAD_REQUEST;
+  console.log(httpCustomMessages.INVALID_DATA)
+  if (!email || !password) return httpCustomMessages.INVALID_DATA;
 
   const [user] = await Model.login(email, password);
-  
-  if (user.length === 0) return response.USER_NOT_FOUND;
+    
+  if (user.length === 0) return httpCustomMessages.USER_NOT_FOUND;
   if (user.error) return user;
+  delete user.password;
   
-  const authenticatedUser = getToken(user);
+  const authenticatedUser = generateToken(user);
 
   return authenticatedUser;
 };
