@@ -27,5 +27,9 @@ module.exports = {
     message: 'Usuário cadastrado',
     error: false,
   },
+  ORDER_FINISHED: {
+    message: 'Compra cadastrada com sucesso',
+    error: false,
+  },
   
 };

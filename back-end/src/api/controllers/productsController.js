@@ -1,5 +1,5 @@
 const productsRouter = require('express').Router();
-const Model = require('../models/productsModel');
+const Model = require('../models/productModel');
 const httpsStatusCode = require('../../utils/httpStatusCode');
 const httpResponse = require('../../utils/httpResponses');
 
